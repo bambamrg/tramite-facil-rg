@@ -1,0 +1,624 @@
+{
+  "tramites": [
+    {
+      "id": "estacionamiento_medido",
+      "nombre": "Estacionamiento Medido",
+      "organismo": "Municipio de Río Grande",
+      "descripcion": "Sistema de Estacionamiento Medido de la ciudad de Río Grande.",
+      "fuente": {
+        "nombre": "Municipio de Río Grande",
+        "url": "https://www.riogrande.gob.ar/estacionamientomedido/"
+      },
+      "secciones": [
+        {
+          "titulo": "Cómo funciona",
+          "icono": "🚗",
+          "bloques": [
+            {
+              "tipo": "texto",
+              "contenido": "El Estacionamiento Medido funciona en las zonas tarifadas de la ciudad. Antes de estacionar, verificá la señalización del lugar para confirmar si corresponde utilizar el sistema."
+            },
+            {
+              "tipo": "texto",
+              "contenido": "Existen dos formas principales de utilizar el servicio:"
+            },
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Estacionamiento Puntual: comprás el tiempo de estacionamiento en un comercio adherido.",
+                "SEM Río Grande: utilizás la aplicación móvil, disponible para Android e iOS."
+              ]
+            },
+            {
+              "tipo": "informacion",
+              "contenido": "La compra mínima de estacionamiento es de una hora. Después de la primera hora, el tiempo puede fraccionarse cada 15 minutos."
+            },
+            {
+              "tipo": "texto",
+              "contenido": "Para conocer los pasos detallados de cada modalidad, consultá la sección Formas de pago."
+            }
+          ]
+        },
+        {
+          "titulo": "Formas de pago",
+          "icono": "💳",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "Estacionamiento Puntual",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Podés comprar tiempo de estacionamiento en los comercios adheridos identificados como Puntos de Venta."
+                },
+                {
+                  "tipo": "pasos",
+                  "elementos": [
+                    "Al estacionar tu automóvil, acercate a un Punto de Venta.",
+                    "Solicitá Estacionamiento Puntual.",
+                    "Indicá la patente del vehículo.",
+                    "Indicá el tiempo de permanencia.",
+                    "La compra mínima es de una hora.",
+                    "El comercio activará el sistema y te entregará un comprobante."
+                  ]
+                },
+                {
+                  "tipo": "informacion",
+                  "contenido": "Después de la primera hora, el tiempo puede fraccionarse cada 15 minutos."
+                },
+                {
+                  "tipo": "informacion",
+                  "contenido": "No es necesario dejar el comprobante dentro del automóvil."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "SEM Río Grande",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "También podés utilizar el sistema mediante la aplicación móvil SEM Río Grande, compatible con Android e iOS."
+                },
+                {
+                  "tipo": "pasos",
+                  "elementos": [
+                    "Ingresá por única vez a la página web y registrate completando el formulario.",
+                    "Recibirás un correo electrónico con un enlace para activar tu cuenta.",
+                    "Recibirás un número de cuenta para utilizar en los Puntos de Venta.",
+                    "Descargá la aplicación SEM Río Grande.",
+                    "Acercate a un Punto de Venta y solicitá Crédito para Estacionamiento Medido.",
+                    "Indicá tu número de cuenta y el monto que querés adquirir.",
+                    "La carga mínima de crédito es de $20.",
+                    "Al estacionar, ingresá a la aplicación e indicá la patente del vehículo."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Tarifas y tiempos",
+          "icono": "💰",
+          "bloques": [
+            {
+              "tipo": "lista",
+              "elementos": [
+                "La compra mínima es de una hora.",
+                "Después de la primera hora, el tiempo puede fraccionarse cada 15 minutos."
+              ]
+            },
+            {
+              "tipo": "advertencia",
+              "contenido": "La fuente oficial muestra como ejemplo que 1 hora y 15 minutos equivalen a $12,50. Este valor se conserva como ejemplo de la página y no debe interpretarse como una tarifa actual completa."
+            }
+          ]
+        },
+        {
+          "titulo": "Puntos de venta",
+          "icono": "📍",
+          "bloques": [
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Kiosco Altoke — Espora Nº 653",
+                "Kiosco El Trébol — 9 de Julio N° 798",
+                "Kiosco Kien Gana — O´higgins N° 110",
+                "Kiosco Alex — Libertad N° 765",
+                "Multirubro Rivadavia — Rivadavia N° 1044",
+                "Multirubro Perlita — Tolhuin 408",
+                "Polirubro Karen — Estrada N° 2287",
+                "Polirubro Tintín — Punta Popper N° 436",
+                "Free Shop — Thorne N° 1070",
+                "La Parmegiana — H. Yrigoyen N° 912",
+                "Kiosco Stop and Go — Ushuaia N° 795"
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Excepciones al pago",
+          "icono": "⚠️",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "Frentistas",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Los vehículos propiedad de frentistas de viviendas unifamiliares pueden acceder a una excepción cuando estacionan paralelo al cordón y sobre el frente estrictamente del garaje autorizado."
+                },
+                {
+                  "tipo": "informacion",
+                  "contenido": "El interesado debe realizar un trámite personal en la Coordinación de Estacionamiento Medido, Espora N° 567, de lunes a viernes de 9 a 16."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Personas con discapacidad",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Deben contar con la excepción emitida por la Dirección de Tránsito y Transporte."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Taxi, remis y servicios públicos",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Vehículos afectados al servicio que se encuentren a la espera de pasajeros por un lapso no mayor a 10 minutos, siempre que el conductor permanezca dentro del vehículo."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Ascenso y descenso de estudiantes",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Vehículos que se encuentren en espera de ascenso o descenso de estudiantes de establecimientos escolares, siempre que el conductor permanezca dentro del vehículo."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Sistema postal",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Vehículos del sistema postal que estén realizando tareas de recolección y distribución durante los horarios de servicio y estén debidamente identificados."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Vehículos oficiales y de emergencia",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Vehículos pertenecientes al Municipio de Río Grande, fuerzas policiales, bomberos, ambulancias y servicios públicos en funciones operativas o de emergencia."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Infracciones",
+          "icono": "🚨",
+          "bloques": [
+            {
+              "tipo": "advertencia",
+              "contenido": "Se encuentra en vigencia el cobro de las infracciones por incumplimiento al pago de la tasa de estacionamiento medido."
+            }
+          ]
+        }
+      ],
+      "informacion_no_disponible": [
+        "La fuente consultada no presenta una tabla tarifaria completa y actualizada.",
+        "La página consultada no presenta un canal específico de reclamos.",
+        "La página menciona la zona de Estacionamiento Medido en el Centro, pero no incorporamos un mapa interactivo en esta primera versión."
+      ]
+    },
+    {
+      "id": "licencia_conducir",
+      "nombre": "Licencia de Conducir",
+      "organismo": "Municipio de Río Grande - Educación Vial",
+      "descripcion": "Información para obtener y renovar la Licencia de Conducir en la ciudad de Río Grande.",
+      "fuente": {
+        "nombre": "Educación Vial - Municipio de Río Grande",
+        "url": "https://educacionvial.riogrande.gob.ar/obtencionlicencia/"
+      },
+      "secciones": [
+        {
+          "titulo": "Licencia por primera vez",
+          "icono": "🆕",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "Requisitos generales",
+              "bloques": [
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "Realizar el curso teórico correspondiente.",
+                    "Aprobar el examen teórico.",
+                    "Realizar el examen psicofísico.",
+                    "Aprobar el examen práctico.",
+                    "Presentar la documentación requerida."
+                  ]
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Pasos del trámite",
+              "bloques": [
+                {
+                  "tipo": "pasos",
+                  "elementos": [
+                    "Realizar el curso teórico online mediante los módulos disponibles.",
+                    "Solicitar turno para realizar el examen teórico presencial en el CGP Padre Zink.",
+                    "Solicitar turno para realizar el Formulario Único de Trámite (FUT) en Otorgamiento de Licencias, en el CGP Padre Zink.",
+                    "Realizar el examen psicofísico en un centro habilitado.",
+                    "Solicitar turno para el examen práctico en la Coordinación de Educación Vial, ubicada en Laserre 177.",
+                    "Realizar el examen práctico en el kartódromo. El ingreso se realiza por Posadas.",
+                    "Retirar la licencia en Otorgamiento de Licencias, Pellegrini y Viedma, presentando la documentación correspondiente."
+                  ]
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Documentación para retirar la licencia",
+              "bloques": [
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "Formulario Único de Trámite (FUT).",
+                    "DNI.",
+                    "Exámenes aprobados.",
+                    "Grupo sanguíneo.",
+                    "CeNAT."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Renovación",
+          "icono": "🔄",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "Plazos",
+              "bloques": [
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "La renovación puede realizarse dentro de los 90 días posteriores al vencimiento.",
+                    "Si pasaron más de 90 días desde el vencimiento, se debe tramitar nuevamente.",
+                    "La renovación no puede realizarse antes de los 30 días previos al vencimiento."
+                  ]
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Clase B",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "La página oficial establece requisitos específicos para la renovación de la licencia Clase B."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Clases C, D y E",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Las licencias profesionales tienen requisitos adicionales para su renovación."
+                },
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "Presentar la documentación requerida.",
+                    "Cumplir con los requisitos correspondientes a la clase profesional.",
+                    "Para determinadas categorías pueden requerirse antecedentes específicos."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Conductores profesionales",
+          "icono": "🚛",
+          "bloques": [
+            {
+              "tipo": "texto",
+              "contenido": "La página oficial diferencia los requisitos para conductores profesionales de las licencias particulares."
+            },
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Clases C, D y E.",
+                "Requisitos específicos según la categoría.",
+                "Para determinadas clases se requiere antigüedad de licencia B.",
+                "La Clase D puede requerir antecedentes penales."
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Menores de edad",
+          "icono": "👦",
+          "bloques": [
+            {
+              "tipo": "texto",
+              "contenido": "Los menores de 18 años tienen requisitos específicos para obtener la licencia."
+            },
+            {
+              "tipo": "lista",
+              "elementos": [
+                "La licencia puede obtenerse desde los 17 años.",
+                "Se requiere autorización correspondiente.",
+                "La autorización para licencia por primera vez puede descargarse desde la página oficial."
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Lugares relacionados con el trámite",
+          "icono": "📍",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "CGP Padre Zink",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Viedma y Pellegrini. Allí se realizan actividades relacionadas con el curso, examen teórico y FUT."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Coordinación de Educación Vial",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Laserre 177. Allí se gestiona el turno para el examen práctico."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Otorgamiento de Licencias",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Pellegrini y Viedma. Allí se realiza el retiro de la licencia."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "informacion_no_disponible": [
+        "La página consultada no presenta los costos o aranceles actuales del trámite.",
+        "La información sobre licencia de otra jurisdicción no se encuentra desarrollada en la página consultada.",
+        "La información específica sobre licencia extraviada no se encuentra desarrollada en la página consultada."
+      ]
+    },
+    {
+      "id": "aprobacion_planos",
+      "nombre": "Aprobación de Planos",
+      "organismo": "Municipio de Río Grande",
+      "descripcion": "Trámite obligatorio para comenzar cualquier construcción en la ciudad de Río Grande. Debe ser realizado por un profesional de la construcción inscripto en el Registro Municipal de la Construcción y con su matrícula al día.",
+      "fuente": {
+        "nombre": "Municipio de Río Grande",
+        "url": "https://www.riogrande.gob.ar/aprobaciondeplanos/"
+      },
+      "secciones": [
+        {
+          "titulo": "¿Quién puede realizarlo?",
+          "icono": "👷",
+          "bloques": [
+            {
+              "tipo": "texto",
+              "contenido": "El trámite es realizado por un profesional de la construcción que debe estar inscripto en el Registro Municipal de la Construcción y tener su matrícula al día."
+            },
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Arquitectos.",
+                "Ingenieros civiles.",
+                "Ingenieros en Construcción.",
+                "Maestros Mayores de Obra (MMO).",
+                "Técnicos constructores."
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Documentación inicial",
+          "icono": "📋",
+          "bloques": [
+            {
+              "tipo": "texto",
+              "contenido": "Esta es la documentación que debe presentarse al comienzo del trámite."
+            },
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Pago de la carpeta técnica.",
+                "Certificado de deslinde y amojonamiento.",
+                "Copia del plano de arquitectura.",
+                "Copia del plano de estructura, cuando corresponda.",
+                "Copias del plano sanitario.",
+                "Planilla de valuación.",
+                "Planilla de solicitud.",
+                "Planilla de empadronamiento.",
+                "Planilla de actas de conexión.",
+                "Planilla de listado de materiales.",
+                "CD con copia digital de los planos en formato PDF o DWG."
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Etapas del trámite",
+          "icono": "🔄",
+          "bloques": [
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 1 — Presentación preliminar",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "El profesional presenta los planos y la documentación solicitada en Mesa de Entradas de la Dirección de Obras Particulares."
+                },
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "Catastro verifica los datos de la propiedad.",
+                    "Planeamiento verifica que el proyecto se ajuste a la normativa.",
+                    "Obras Particulares verifica el plano de arquitectura."
+                  ]
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 2 — Certificado provisorio",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "En esta etapa se puede solicitar un certificado provisorio de inicio de obra."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 3 — Verificación sanitaria",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "La Dirección de Obras Sanitarias verifica los planos sanitarios de acuerdo con la normativa."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 4 — Carpeta Técnica Previa",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Cuando las cuatro direcciones aprueban la documentación, el profesional puede retirar la Carpeta Técnica Previa."
+                },
+                {
+                  "tipo": "advertencia",
+                  "contenido": "La Carpeta Técnica Previa no significa que los planos estén aprobados."
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 5 — Presentación final",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "El profesional presenta la carpeta con los planos finales sin observaciones en Mesa de Entradas de la Dirección de Obras Particulares."
+                },
+                {
+                  "tipo": "lista",
+                  "elementos": [
+                    "La Dirección de Despacho caratula la carpeta.",
+                    "Los planos son firmados por el Director de Obras Particulares.",
+                    "Los planos son firmados por el Director de Obras Sanitarias.",
+                    "Los planos son firmados por el Secretario de Obras y Servicios Públicos."
+                  ]
+                }
+              ]
+            },
+            {
+              "tipo": "subseccion",
+              "titulo": "Etapa 6 — Retiro de planos aprobados",
+              "bloques": [
+                {
+                  "tipo": "texto",
+                  "contenido": "Los planos aprobados, firmados y sellados pueden ser retirados por el profesional en la Mesa de Entradas de la Dirección de Obras Particulares."
+                },
+                {
+                  "tipo": "informacion",
+                  "contenido": "En esta instancia los planos se consideran aprobados. También se puede solicitar el certificado definitivo de inicio de obra."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Documentación final",
+          "icono": "📁",
+          "bloques": [
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Carpeta Técnica Previa sin observaciones.",
+                "Nota al Intendente.",
+                "Libre de deuda.",
+                "Comprobantes de pago.",
+                "Planos originales en papel vegetal.",
+                "Copias de los planos.",
+                "CD actualizado con los planos digitales.",
+                "Formulario de acta de conservación.",
+                "Planos sanitarios originales y copias.",
+                "Comprobantes de eventuales sanitarios."
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Observaciones importantes",
+          "icono": "⚠️",
+          "bloques": [
+            {
+              "tipo": "advertencia",
+              "contenido": "La construcción en el terreno sólo podrá iniciarse una vez solicitado el Certificado de Inicio de Obra."
+            },
+            {
+              "tipo": "texto",
+              "contenido": "Si los planos son observados por alguna de las direcciones involucradas, deberán ser retirados en Mesa de Entradas de la Dirección de Obras Particulares. Una vez realizadas las correcciones, el profesional debe volver a ingresarlos por Mesa de Entradas."
+            }
+          ]
+        },
+        {
+          "titulo": "Lugar y contacto",
+          "icono": "📍",
+          "bloques": [
+            {
+              "tipo": "lista",
+              "elementos": [
+                "Lugar: Dirección de Obras Particulares.",
+                "Dirección: 9 de Julio 601.",
+                "Horario: lunes a viernes de 9 a 16.",
+                "Teléfono: 436200."
+              ]
+            }
+          ]
+        }
+      ],
+      "informacion_no_disponible": [
+        "La página consultada no presenta en esta sección un detalle completo de los costos del trámite.",
+        "No incorporamos información que no esté publicada en la fuente oficial consultada."
+      ]
+    }
+  ]
+}
