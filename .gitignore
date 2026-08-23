@@ -1,5 +1,11 @@
 .venv/
+.venv-1/
+.venv312/
+
 __pycache__/
 *.pyc
 .env
+
 .streamlit/secrets.toml
+
+crear-entornos.txt
