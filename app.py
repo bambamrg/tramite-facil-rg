@@ -31,36 +31,6 @@ if "tamano_texto" not in st.session_state:
 
 
 
-# Controles superiores
-
-col1, col2, col3 = st.columns([2, 1, 2])
-
-with col1:
-    st.markdown("### ⚙️ Accesibilidad")
-
-with col2:
-
-    if st.button(
-        "🌙" if not st.session_state.modo_oscuro else "☀️",
-        help="Cambiar entre modo claro y oscuro"
-    ):
-        st.session_state.modo_oscuro = (
-            not st.session_state.modo_oscuro
-        )
-        st.rerun()
-
-with col3:
-
-    st.session_state.tamano_texto = st.selectbox(
-        "🔍 Tamaño",
-        ["Normal", "Grande", "Muy grande"],
-        index=["Normal", "Grande", "Muy grande"].index(
-            st.session_state.tamano_texto
-        ),
-        label_visibility="collapsed"
-    )
-
-
 # Tamaños según la preferencia
 
 tamanos_texto = {
@@ -154,8 +124,8 @@ st.markdown(
         border: 1px solid {color_borde};
         border-radius: 18px;
         padding: 35px 25px;
-        text-align: center;
-        margin-bottom: 30px;
+        text-align: left;
+        margin-bottom: 20px;
     }}
 
     .hero-icon {{
@@ -176,22 +146,70 @@ st.markdown(
         max-width: 650px;
     }}
 
-    .search-card {{
-        background-color: {color_secundario};
-        border: 1px solid {color_borde};
-        border-radius: 16px;
-        padding: 25px;
-        margin-top: 15px;
-        margin-bottom: 25px;
-    }}
-
-    .search-description {{
+    .accessibility-title {{
         font-size: {config_visual["texto"]};
-        opacity: 0.8;
-        margin-bottom: 15px;
+        font-weight: 700;
+        margin-bottom: 8px;
     }}
 
-        .quick-access-title {{
+    .tramite-card-description {{
+        font-size: {config_visual["texto"]};
+        opacity: 0.75;
+        margin-top: 8px;
+        line-height: 1.35;
+    }}
+
+    .search-card {{
+         background-color: {color_secundario};
+         border: 2px solid {color_borde};
+         border-radius: 18px;
+         padding: 28px;
+         margin-top: 22px;
+         margin-bottom: 10px;
+     }}
+
+     .search-eyebrow {{
+         font-size: 0.85em;
+         font-weight: 700;
+         letter-spacing: 0.08em;
+         text-transform: uppercase;
+         margin-bottom: 6px;
+         opacity: 0.75;
+     }}
+
+     .search-card h2 {{
+         margin-top: 0;
+         margin-bottom: 8px;
+     }}
+
+     .search-description {{
+         font-size: {config_visual["texto"]};
+         opacity: 0.85;
+         margin-bottom: 4px;
+         line-height: 1.45;
+     }}
+
+     div[data-testid="stTextInput"] input {{
+         min-height: 56px;
+         font-size: {config_visual["texto"]} !important;
+         padding: 12px 16px !important;
+         border-width: 2px !important;
+         border-radius: 12px !important;
+     }}
+
+     div[data-testid="stTextInput"] label {{
+         font-weight: 700 !important;
+         margin-bottom: 6px !important;
+     }}
+
+     div[data-testid="stRadio"] label {{
+         font-weight: 600 !important;
+     }}
+
+     div[data-testid="stRadio"] div[role="radiogroup"] {{
+         gap: 8px;
+     }}
+     .quick-access-title {{
         text-align: center;
         font-size: {config_visual["subtitulo"]} !important;
         font-weight: 600;
@@ -294,6 +312,40 @@ st.markdown(
 
     .stSelectbox div[data-baseweb="select"] {{
         font-size: {config_visual["texto"]} !important;
+    }}
+
+    
+    /* Mejoras de accesibilidad visual y teclado */
+    .stButton button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [role="button"]:focus-visible {{
+        outline: 3px solid #FFD54F !important;
+        outline-offset: 3px !important;
+        box-shadow: 0 0 0 2px #111111 !important;
+    }}
+
+    .tramite-card {{
+        min-height: 170px;
+    }}
+
+    .tramite-card-description,
+    .search-description,
+    .quick-access-description,
+    .hero-subtitle {{
+        line-height: 1.6 !important;
+    }}
+
+    /* No depender únicamente del color para indicar estados */
+    .stButton button {{
+        text-decoration: none !important;
+    }}
+
+    @media (max-width: 640px) {{
+        .tramite-card {{
+            min-height: auto;
+        }}
     }}
 
     </style>
@@ -1250,19 +1302,52 @@ UMBRAL_SIMILITUD_TRAMITE = 0.25
 # INTERFAZ PRINCIPAL
 # ============================================================
 
+# Encabezado principal
 st.markdown(
     """
     <div class="hero">
         <div class="hero-icon">🏛️</div>
         <div class="hero-title">Trámite Fácil</div>
         <div class="hero-subtitle">
-            Información clara y sencilla sobre trámites
-            municipales de Río Grande.
+            Información clara y sencilla sobre trámites municipales de Río Grande.
         </div>
     </div>
     """,
     unsafe_allow_html=True
 )
+
+# ------------------------------------------------------------
+# ACCESIBILIDAD
+# Los controles quedan debajo del título y ocupan poco espacio.
+# ------------------------------------------------------------
+
+def cambiar_tamano_texto():
+    st.session_state.tamano_texto = st.session_state.selector_tamano
+
+col_control_tema, col_control_tamano = st.columns([1, 1])
+
+with col_control_tema:
+    if st.button(
+        "☀️ Modo claro" if st.session_state.modo_oscuro else "🌙 Modo oscuro",
+        help="Cambiar entre modo claro y oscuro",
+        key="boton_tema",
+        use_container_width=True
+    ):
+        st.session_state.modo_oscuro = not st.session_state.modo_oscuro
+        st.rerun()
+
+with col_control_tamano:
+    st.radio(
+        "Tamaño del texto",
+        ["Normal", "Grande", "Muy grande"],
+        index=["Normal", "Grande", "Muy grande"].index(
+            st.session_state.tamano_texto
+        ),
+        key="selector_tamano",
+        on_change=cambiar_tamano_texto,
+        horizontal=True,
+        label_visibility="visible",
+    )
 
 
 # ============================================================
@@ -1272,32 +1357,52 @@ st.markdown(
 st.markdown(
     f"""
     <div class="search-card">
-        <h2>🤖 ¿Qué necesitás hacer?</h2>
+        <div class="search-eyebrow">PASO 1 · BUSCÁ LO QUE NECESITÁS</div>
+        <h2>🔎 ¿Qué necesitás consultar?</h2>
         <div class="search-description">
-            Escribí tu consulta con tus propias palabras.
-            Intentaremos encontrar el trámite y la información
-            que necesitás.
+            Escribí tu pregunta con tus propias palabras. Por ejemplo:
+            <strong>¿Qué documentos necesito para sacar la licencia?</strong>
         </div>
     </div>
     """,
     unsafe_allow_html=True
 )
 
+def nueva_consulta():
+    # Una nueva búsqueda debe tener prioridad sobre la información
+    # abierta desde una tarjeta.
+    st.session_state.tramite_desde_tarjeta = None
+
+def abrir_tramite(nombre):
+    # Callback ejecutado antes de volver a renderizar los widgets.
+    # Así evitamos modificar la clave de un widget después de instanciarlo.
+    st.session_state.tramite_desde_tarjeta = nombre
+    st.session_state.consulta_input = ""
+
 consulta = st.text_input(
-    "Contame con tus palabras qué necesitás",
+    "Escribí tu consulta",
     placeholder=(
-        "Ejemplo: tengo 17 años y "
-        "quiero sacar mi licencia por primera vez"
-    )
+        "Ejemplo: tengo 17 años y quiero sacar mi licencia por primera vez"
+    ),
+    key="consulta_input",
+    on_change=nueva_consulta,
 )
 
 
-if consulta:
+# Trámite seleccionado desde una tarjeta.
+# Se utiliza session_state para que la selección se mantenga después del rerun.
+if "tramite_desde_tarjeta" not in st.session_state:
+    st.session_state.tramite_desde_tarjeta = None
 
+
+# ============================================================
+# PROCESAR BÚSQUEDA
+# ============================================================
+
+if consulta:
     # --------------------------------------------------------
     # PASO 1: DETECTAR TRÁMITE CON REGLAS
     # --------------------------------------------------------
-
     resultado = detectar_tramite(
         consulta,
         datos["tramites"]
@@ -1305,48 +1410,31 @@ if consulta:
 
     metodo_deteccion_tramite = "reglas"
 
-
     # --------------------------------------------------------
     # PASO 2: TF-IDF COMO RESPALDO
     # --------------------------------------------------------
-
     if resultado is None:
-
-        resultados_tramite_similitud = (
-            buscar_tramite_por_similitud(
-                consulta,
-                cantidad_resultados=1
-            )
+        resultados_tramite_similitud = buscar_tramite_por_similitud(
+            consulta,
+            cantidad_resultados=1
         )
 
         if resultados_tramite_similitud:
+            mejor_tramite = resultados_tramite_similitud[0]
 
-            mejor_tramite = (
-                resultados_tramite_similitud[0]
-            )
-
-            if (
-                mejor_tramite["similitud"]
-                >= UMBRAL_SIMILITUD_TRAMITE
-            ):
-
+            if mejor_tramite["similitud"] >= UMBRAL_SIMILITUD_TRAMITE:
                 resultado = obtener_tramite_por_nombre(
                     datos["tramites"],
                     mejor_tramite["nombre"]
                 )
-
                 metodo_deteccion_tramite = "similitud"
 
-
     # --------------------------------------------------------
-    # PASO 3: PEDIR ACLARACIÓN
+    # PASO 3: PEDIR ACLARACIÓN SI NO SE IDENTIFICA EL TRÁMITE
     # --------------------------------------------------------
-
     if resultado is None:
-
         st.warning(
-            "Necesito un poco más de información para "
-            "identificar el trámite."
+            "Necesito un poco más de información para identificar el trámite."
         )
 
         tramite_aclarado = st.selectbox(
@@ -1361,48 +1449,36 @@ if consulta:
         )
 
         if tramite_aclarado != "Seleccioná un trámite":
-
+            st.session_state.tramite_desde_tarjeta = tramite_aclarado
             resultado = obtener_tramite_por_nombre(
                 datos["tramites"],
                 tramite_aclarado
             )
-
             metodo_deteccion_tramite = "seleccion_usuario"
-
 
     # --------------------------------------------------------
     # CONTINUAR SI HAY UN TRÁMITE
     # --------------------------------------------------------
-
     if resultado:
-
         if metodo_deteccion_tramite == "reglas":
-
             st.success(
                 "Entendí que tu consulta está "
                 f"relacionada con: **{resultado['nombre']}**"
             )
-
         elif metodo_deteccion_tramite == "similitud":
-
             st.info(
-                "No encontré una coincidencia exacta, "
-                "pero encontré un trámite relacionado "
-                f"con tu consulta: **{resultado['nombre']}**"
+                "No encontré una coincidencia exacta, pero encontré un trámite "
+                f"relacionado con tu consulta: **{resultado['nombre']}**"
             )
-
         elif metodo_deteccion_tramite == "seleccion_usuario":
-
             st.success(
                 "Perfecto. Voy a buscar información sobre: "
                 f"**{resultado['nombre']}**"
             )
 
-
         # ----------------------------------------------------
         # DETECTAR SECCIONES CON REGLAS
         # ----------------------------------------------------
-
         secciones_detectadas = detectar_secciones(
             consulta,
             resultado
@@ -1410,13 +1486,10 @@ if consulta:
 
         coincidencia_aproximada = False
 
-
         # ----------------------------------------------------
         # TF-IDF COMO RESPALDO PARA SECCIONES
         # ----------------------------------------------------
-
         if not secciones_detectadas:
-
             resultados_similitud = buscar_por_similitud(
                 consulta,
                 resultado,
@@ -1424,98 +1497,70 @@ if consulta:
             )
 
             if resultados_similitud:
-
                 mejor_resultado = resultados_similitud[0]
 
-                if (
-                    mejor_resultado["similitud"]
-                    >= UMBRAL_SIMILITUD_SECCION
-                ):
-
+                if mejor_resultado["similitud"] >= UMBRAL_SIMILITUD_SECCION:
                     secciones_detectadas.append(
-                        {
-                            "nombre":
-                            mejor_resultado["nombre"]
-                        }
+                        {"nombre": mejor_resultado["nombre"]}
                     )
-
                     coincidencia_aproximada = True
-
 
         # ----------------------------------------------------
         # ELIMINAR DUPLICADOS
         # ----------------------------------------------------
-
         nombres_secciones = []
 
         for item in secciones_detectadas:
-
             nombre = item["nombre"]
-
             if nombre not in nombres_secciones:
-
-                nombres_secciones.append(
-                    nombre
-                )
-
+                nombres_secciones.append(nombre)
 
         # ----------------------------------------------------
-        # MOSTRAR RESULTADOS
+        # MOSTRAR RESULTADOS DE LA BÚSQUEDA
         # ----------------------------------------------------
-
         if nombres_secciones:
-
             if coincidencia_aproximada:
-
                 st.info(
-                    "No encontré una coincidencia exacta, "
-                    "pero encontré información relacionada "
-                    "con tu consulta."
+                    "No encontré una coincidencia exacta, pero encontré "
+                    "información relacionada con tu consulta."
                 )
 
-            st.subheader(
-                "📌 Información que puede ayudarte"
-            )
+            st.subheader("📌 Información que puede ayudarte")
 
             for nombre_seccion in nombres_secciones:
-
                 seccion = obtener_seccion(
                     resultado,
                     nombre_seccion
                 )
 
                 if seccion:
-
-                    icono = seccion.get(
-                        "icono",
-                        "📌"
-                    )
+                    icono = seccion.get("icono", "📌")
 
                     with st.expander(
                         f"{icono} {nombre_seccion}",
                         expanded=False
                     ):
-
-                        mostrar_bloques(
-                            seccion["bloques"]
-                        )
-
+                        mostrar_bloques(seccion["bloques"])
                 else:
-
                     st.info(
-                        f"La intención detectada fue "
-                        f"**{nombre_seccion}**, pero todavía "
-                        "no existe una sección con ese nombre "
+                        f"La intención detectada fue **{nombre_seccion}**, "
+                        "pero todavía no existe una sección con ese nombre "
                         "en los datos del trámite."
                     )
-
         else:
-
             st.info(
-                "Identifiqué el trámite, pero todavía "
-                "no pude determinar qué información "
-                "específica necesitás."
+                "Identifiqué el trámite, pero todavía no pude determinar "
+                "qué información específica necesitás."
             )
+
+        # En una búsqueda, la fuente corresponde al resultado mostrado.
+        # Se mantiene dentro del bloque de resultados y no se muestra la
+        # ficha completa del trámite debajo de las tarjetas.
+        st.markdown("### 🔗 Fuente oficial")
+        st.markdown(
+            f"[{resultado['fuente']['nombre']}]({resultado['fuente']['url']})"
+        )
+
 
 # ============================================================
 # ACCESO RÁPIDO A TRÁMITES
@@ -1528,7 +1573,7 @@ st.markdown(
     </div>
 
     <div class="quick-access-description">
-        Podés acceder a la información completa sin escribir una consulta.
+        Si preferís no escribir una consulta, elegí uno de los trámites disponibles.
     </div>
     """,
     unsafe_allow_html=True
@@ -1537,235 +1582,130 @@ st.markdown(
 
 col1, col2, col3 = st.columns(3)
 
-
 with col1:
-
     st.markdown(
-        f"""
+        """
         <div class="tramite-card">
             <div class="tramite-card-icon">🅿️</div>
-            <div class="tramite-card-title">
-                Estacionamiento Medido
+            <div class="tramite-card-title">Estacionamiento Medido</div>
+            <div class="tramite-card-description">
+                Pagos, tarifas, puntos de venta, excepciones e infracciones.
             </div>
         </div>
         """,
         unsafe_allow_html=True
     )
 
-    boton_estacionamiento = st.button(
+    st.button(
         "Ver información",
         key="rapido_estacionamiento",
-        use_container_width=True
+        use_container_width=True,
+        on_click=abrir_tramite,
+        args=("Estacionamiento Medido",)
     )
-
 
 with col2:
-
     st.markdown(
-        f"""
+        """
         <div class="tramite-card">
             <div class="tramite-card-icon">🚗</div>
-            <div class="tramite-card-title">
-                Licencia de Conducir
+            <div class="tramite-card-title">Licencia de Conducir</div>
+            <div class="tramite-card-description">
+                Primera licencia, renovación, menores, profesionales y lugares.
             </div>
         </div>
         """,
         unsafe_allow_html=True
     )
 
-    boton_licencia = st.button(
+    st.button(
         "Ver información",
         key="rapido_licencia",
-        use_container_width=True
+        use_container_width=True,
+        on_click=abrir_tramite,
+        args=("Licencia de Conducir",)
     )
 
-
 with col3:
-
     st.markdown(
-        f"""
+        """
         <div class="tramite-card">
             <div class="tramite-card-icon">📐</div>
-            <div class="tramite-card-title">
-                Aprobación de Planos
+            <div class="tramite-card-title">Aprobación de Planos</div>
+            <div class="tramite-card-description">
+                Documentación, etapas, responsables, contacto y observaciones.
             </div>
         </div>
         """,
         unsafe_allow_html=True
     )
 
-    boton_planos = st.button(
+    st.button(
         "Ver información",
         key="rapido_planos",
-        use_container_width=True
-    )
-# ============================================================
-# CONSULTA MANUAL
-# ============================================================
-
-st.divider()
-
-st.subheader(
-    "📋 Consultar un trámite manualmente"
-)
-
-
-opciones = {
-    tramite["nombre"]: tramite
-    for tramite in datos["tramites"]
-}
-
-
-nombres_tramites = list(
-    opciones.keys()
-)
-
-
-# ============================================================
-# SELECCIÓN DESDE LOS BOTONES RÁPIDOS
-# ============================================================
-
-tramite_desde_boton = None
-
-
-if boton_estacionamiento:
-
-    tramite_desde_boton = (
-        "Estacionamiento Medido"
-    )
-
-
-elif boton_licencia:
-
-    tramite_desde_boton = (
-        "Licencia de Conducir"
-    )
-
-
-elif boton_planos:
-
-    tramite_desde_boton = (
-        "Aprobación de Planos"
+        use_container_width=True,
+        on_click=abrir_tramite,
+        args=("Aprobación de Planos",)
     )
 
 
 # ============================================================
-# SELECTOR MANUAL
+# MOSTRAR INFORMACIÓN COMPLETA SOLO SI EL USUARIO LA SOLICITÓ
 # ============================================================
 
-if tramite_desde_boton:
+tramite_seleccionado = st.session_state.tramite_desde_tarjeta
 
-    indice_tramite = nombres_tramites.index(
-        tramite_desde_boton
+if tramite_seleccionado and not consulta:
+    tramite = obtener_tramite_por_nombre(
+        datos["tramites"],
+        tramite_seleccionado
     )
 
-else:
-
-    indice_tramite = 0
-
-
-tramite_seleccionado = st.selectbox(
-    "¿Qué trámite necesitás información?",
-    nombres_tramites,
-    index=indice_tramite
-)
-
-
-# ============================================================
-# OBTENER TRÁMITE
-# ============================================================
-
-tramite = opciones[
-    tramite_seleccionado
-]
-
-# ============================================================
-# ENCABEZADO DEL TRÁMITE SELECCIONADO
-# ============================================================
-
-st.markdown(
-    """
-    <div class="tramite-header">
-        <div class="tramite-header-icon">
-            📋
-        </div>
-        <div class="tramite-header-content">
-            <div class="tramite-header-title">
-                Información del trámite
+    if tramite:
+        st.markdown(
+            """
+            <div class="tramite-header">
+                <div class="tramite-header-icon">📋</div>
+                <div class="tramite-header-content">
+                    <div class="tramite-header-title">
+                        Información del trámite
+                    </div>
+                    <div class="tramite-header-description">
+                        Información oficial explicada de forma sencilla.
+                    </div>
+                </div>
             </div>
-            <div class="tramite-header-description">
-                A continuación encontrarás la información oficial
-                explicada de forma sencilla.
-            </div>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-# ============================================================
-# INFORMACIÓN COMPLETA DEL TRÁMITE
-# ============================================================
-
-st.header(
-    f"📄 {tramite['nombre']}"
-)
-
-st.write(
-    tramite["descripcion"]
-)
-
-
-# ============================================================
-# FUENTE OFICIAL
-# ============================================================
-
-st.markdown(
-    "### 🔗 Fuente oficial: "
-    f"[{tramite['fuente']['nombre']}]"
-    f"({tramite['fuente']['url']})"
-)
-
-
-# ============================================================
-# SECCIONES DEL TRÁMITE
-# ============================================================
-
-for seccion in tramite["secciones"]:
-
-    icono = seccion.get(
-        "icono",
-        "📌"
-    )
-
-    with st.expander(
-        f"{icono} {seccion['titulo']}",
-        expanded=False
-    ):
-
-        mostrar_bloques(
-            seccion["bloques"]
+            """,
+            unsafe_allow_html=True
         )
 
+        st.header(f"📄 {tramite['nombre']}")
+        st.write(tramite["descripcion"])
 
-# ============================================================
-# INFORMACIÓN NO DISPONIBLE
-# ============================================================
+        for seccion in tramite["secciones"]:
+            icono = seccion.get("icono", "📌")
 
-if "informacion_no_disponible" in tramite:
+            with st.expander(
+                f"{icono} {seccion['titulo']}",
+                expanded=False
+            ):
+                mostrar_bloques(seccion["bloques"])
 
-    with st.expander(
-        "ℹ️ Información no disponible "
-        "en la fuente consultada",
-        expanded=False
-    ):
+        if "informacion_no_disponible" in tramite:
+            with st.expander(
+                "ℹ️ Información no disponible en la fuente consultada",
+                expanded=False
+            ):
+                for informacion in tramite["informacion_no_disponible"]:
+                    st.write(f"• {informacion}")
 
-        for informacion in tramite[
-            "informacion_no_disponible"
-        ]:
-
-            st.write(
-                f"• {informacion}"
-            )
+        # La fuente oficial queda al final, después de toda la información.
+        st.markdown(
+            "### 🔗 Fuente oficial"
+        )
+        st.markdown(
+            f"[{tramite['fuente']['nombre']}]({tramite['fuente']['url']})"
+        )
 
 
 # ============================================================
@@ -1775,8 +1715,7 @@ if "informacion_no_disponible" in tramite:
 st.divider()
 
 st.caption(
-    "Trámite Fácil organiza y explica información "
-    "publicada por fuentes oficiales. "
-    "Ante cambios o dudas, consultá siempre "
-    "la fuente oficial correspondiente."
+    "Trámite Fácil organiza y explica información publicada por fuentes oficiales. "
+    "Ante cambios o dudas, consultá siempre la fuente oficial correspondiente."
 )
+
